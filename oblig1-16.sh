@@ -1,5 +1,5 @@
-#!/usr/bin/env bash
-#
+#!/bin/bash
+
 filename=$1
 secs=$2
 
@@ -7,7 +7,7 @@ timenow=$(date +%s)
 
 echo "Kjører filkontroll for $filename hvert $secs sekund"
 
-if [ -f "$filename" ]; then
+if [[ -f "$filename" ]]; then
     # Slettet fil/Endret fil
     while sleep $secs; 
     do
@@ -16,7 +16,7 @@ if [ -f "$filename" ]; then
             exit
         fi
 
-        if [ $(stat -f %m $filename) -gt $timeNow ]; then
+        if [[ $(stat -c %Y $filename) -gt $timeNow ]]; then
             echo "Filen $1 ble endret."
             exit 
         fi
@@ -26,7 +26,7 @@ else
     #Filen ble opprettet
     while sleep $secs; 
     do
-        if [ -f "$filename" ]; then
+        if [[ -f "$filename" ]]; then
             echo "Filen $1 ble opprettet."
             exit
         fi
