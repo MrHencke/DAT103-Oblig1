@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #Oblig 1 Oppgave 18
 
 declare -i sum=0
