@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 #Oblig 1 Oppgave 19
 
-sum=0
-loggfil=$1
-read -p "Skriv inn en hendelse " hend
-out="$(grep -i "$hend" "$loggfil" | cut -f2 -d$'\t')"
-for i in $out
-do ((sum+=i))
-done
-echo "Summen er: " $sum
+declare -i sum=0
+file=$1
+
+read -p "Hva er hendelsen? " hendelse
+while read -r name value
+do
+    if [ "$name" = "$hendelse" ];then sum+=$value; fi
+done < "$file"
+
+echo $sum
