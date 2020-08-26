@@ -1,4 +1,5 @@
 #!/bin/bash
+#Oblig 1 Oppgave 16
 
 filename=$1
 secs=$2
